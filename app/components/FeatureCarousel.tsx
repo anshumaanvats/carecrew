@@ -22,8 +22,8 @@ const features = [
       "Phone Snatching Detection: Anti-theft mechanism.",
       "Biometric Authentication: Secure startup and user access.",
     ],
-    lightIcon: "/safety.png",
-    darkIcon: "/safety-d.png",
+    lightIcon: "/Safety.png",
+    darkIcon: "/Safety-d.png",
   },
   {
     title: "Comfort & Connectivity",
