@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import jsPDF from "jspdf"
+import { ChevronDown, ChevronUp } from 'lucide-react'
 
 // Define types
 interface Option {
@@ -37,7 +38,7 @@ const options: Options = {
   controlOptions: [
     { label: "Standard Joystick", price: 0, selected: true, disabled: true },
     { label: "Gesture Control", price: 2500, selected: false, disabled: false },
-    { label: "Mobile App Control", price: 1500, selected: false, disabled: false },
+    { label: "Mobile Control", price: 1500, selected: false, disabled: false },
   ],
   mobilityComfort: [
     { label: "Omnidirectional Mecanum Wheels", price: 0, selected: true, disabled: true },
@@ -62,12 +63,12 @@ const options: Options = {
   ],
   extraAddons: [
     { label: "Led Headlights and Horn", price: 0, selected: true, disabled: true },
-    { label: "Foot Rest", price: 1800, selected: false, disabled: false },
+    { label: "Foot Rest Support", price: 1800, selected: false, disabled: false },
     { label: "Head Rest Support", price: 2000, selected: false, disabled: false },  
     { label: "Battery Upgrade (More capacity)", price: 5000, selected: false, disabled: false },
     { label: "Weatherproof Seat Covers", price: 1500, selected: false, disabled: false },
     { label: "Comfortable Cushion Seat", price: 1500, selected: false, disabled: false },
-    { label: "Customized Cloth for Seat", price: 1000, selected: false, disabled: false },
+    { label: "Customized Seat Cover", price: 1000, selected: false, disabled: false },
     { label: "Wheel Chair Colour Option", price: 1200, selected: false, disabled: false },
   ],
 }
@@ -78,6 +79,7 @@ export default function Customize() {
   const [formData, setFormData] = useState<FormData>({ name: "", email: "", phone: "" })
   const [formErrors, setFormErrors] = useState<FormErrors>({ name: "", email: "", phone: "" })
   const [showPopup, setShowPopup] = useState<boolean>(false)
+  const [isPriceCardExpanded, setIsPriceCardExpanded] = useState<boolean>(true)
 
   const handleChange = (category: keyof Options, index: number) => {
     if (selectedOptions[category][index].disabled) return
@@ -311,9 +313,9 @@ export default function Customize() {
           ))}
         </div>
 
-        {/* Total Price Card with Form */}
+        {/* Total Price Card with Swipe Down */}
         <motion.div
-          className="fixed bottom-8 right-8 w-96 rounded-xl shadow-xl p-6 border-t-4"
+          className="fixed bottom-8 right-8 w-96 rounded-xl shadow-xl border-t-4"
           style={{ 
             backgroundColor: 'hsl(var(--card))',
             borderTopColor: 'hsl(var(--primary))'
@@ -322,90 +324,120 @@ export default function Customize() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex justify-between items-center mb-4">
-            <span 
-              className="text-xl font-semibold"
-              style={{ color: 'hsl(var(--card-foreground))' }}
-            >
-              Total Price
-            </span>
-            <span 
-              className="text-2xl font-bold"
-              style={{ color: 'hsl(var(--primary))' }}
-            >
-              ₹{totalPrice.toLocaleString()}
-            </span>
-          </div>
-
-          <div className="space-y-4 mb-4">
-            <div>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                placeholder="Your Name"
-                className="w-full p-2 rounded border"
-                style={{
-                  borderColor: 'hsl(var(--input))',
-                  backgroundColor: 'hsl(var(--card))',
-                  color: 'hsl(var(--card-foreground))'
-                }}
-              />
-              {formErrors.name && (
-                <p className="text-sm mt-1" style={{ color: 'hsl(var(--destructive))' }}>
-                  {formErrors.name}
-                </p>
-              )}
-            </div>
-            <div>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="Your Email"
-                className="w-full p-2 rounded border"
-                style={{
-                  borderColor: 'hsl(var(--input))',
-                  backgroundColor: 'hsl(var(--card))',
-                  color: 'hsl(var(--card-foreground))'
-                }}
-              />
-              {formErrors.email && (
-                <p className="text-sm mt-1" style={{ color: 'hsl(var(--destructive))' }}>
-                  {formErrors.email}
-                </p>
-              )}
-            </div>
-            <div>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                placeholder="Your Phone Number"
-                className="w-full p-2 rounded border"
-                style={{
-                  borderColor: 'hsl(var(--input))',
-                  backgroundColor: 'hsl(var(--card))',
-                  color: 'hsl(var(--card-foreground))'
-                }}
-              />
-              {formErrors.phone && (
-                <p className="text-sm mt-1" style={{ color: 'hsl(var(--destructive))' }}>
-                  {formErrors.phone}
-                </p>
-              )}
-            </div>
-          </div>
-
-          <button
-            className="apple-button w-full"
-            onClick={handleSubmit}
+          {/* Swipe Handle */}
+          <div 
+            className="flex justify-center cursor-pointer py-2"
+            onClick={() => setIsPriceCardExpanded(!isPriceCardExpanded)}
           >
-            Get Final Quote
-          </button>
+            <div className="w-12 h-1 bg-gray-400 rounded-full" />
+          </div>
+
+          {/* Collapsible Content */}
+          <motion.div
+            animate={{ 
+              height: isPriceCardExpanded ? 'auto' : 0,
+              opacity: isPriceCardExpanded ? 1 : 0,
+            }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden px-6 pb-6"
+          >
+            <div className="flex justify-between items-center mb-4">
+              <span 
+                className="text-xl font-semibold"
+                style={{ color: 'hsl(var(--card-foreground))' }}
+              >
+                Total Price
+              </span>
+              <span 
+                className="text-2xl font-bold"
+                style={{ color: 'hsl(var(--primary))' }}
+              >
+                ₹{totalPrice.toLocaleString()}
+              </span>
+            </div>
+
+            <div className="space-y-4 mb-4">
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="Your Name"
+                  className="w-full p-2 rounded border"
+                  style={{
+                    borderColor: 'hsl(var(--input))',
+                    backgroundColor: 'hsl(var(--card))',
+                    color: 'hsl(var(--card-foreground))'
+                  }}
+                />
+                {formErrors.name && (
+                  <p className="text-sm mt-1" style={{ color: 'hsl(var(--destructive))' }}>
+                    {formErrors.name}
+                  </p>
+                )}
+              </div>
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Your Email"
+                  className="w-full p-2 rounded border"
+                  style={{
+                    borderColor: 'hsl(var(--input))',
+                    backgroundColor: 'hsl(var(--card))',
+                    color: 'hsl(var(--card-foreground))'
+                  }}
+                />
+                {formErrors.email && (
+                  <p className="text-sm mt-1" style={{ color: 'hsl(var(--destructive))' }}>
+                    {formErrors.email}
+                  </p>
+                )}
+              </div>
+              <div>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="Your Phone Number"
+                  className="w-full p-2 rounded border"
+                  style={{
+                    borderColor: 'hsl(var(--input))',
+                    backgroundColor: 'hsl(var(--card))',
+                    color: 'hsl(var(--card-foreground))'
+                  }}
+                />
+                {formErrors.phone && (
+                  <p className="text-sm mt-1" style={{ color: 'hsl(var(--destructive))' }}>
+                    {formErrors.phone}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <button
+              className="apple-button w-full"
+              onClick={handleSubmit}
+            >
+              Get Final Quote
+            </button>
+          </motion.div>
+
+          {/* Expand/Collapse Button */}
+          <div 
+            className="flex justify-center py-2 cursor-pointer"
+            onClick={() => setIsPriceCardExpanded(!isPriceCardExpanded)}
+          >
+            {isPriceCardExpanded ? (
+              <ChevronDown className="w-6 h-6" style={{ color: 'hsl(var(--primary))' }} />
+            ) : (
+              <ChevronUp className="w-6 h-6" style={{ color: 'hsl(var(--primary))' }} />
+            )}
+          </div>
         </motion.div>
 
         {/* Popup */}
