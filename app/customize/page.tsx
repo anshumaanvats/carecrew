@@ -92,7 +92,7 @@ export default function Customize() {
   }
 
   const calculateTotal = (updatedOptions: Options) => {
-    let total = 50000 // Base price
+    let total = 52500 // Base price
     Object.values(updatedOptions).forEach((category: Option[]) => {
       category.forEach((option: Option) => {
         if (option.selected && !option.disabled) total += option.price
