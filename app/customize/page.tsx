@@ -75,7 +75,7 @@ const options: Options = {
 
 export default function Customize() {
   const [selectedOptions, setSelectedOptions] = useState<Options>(options)
-  const [totalPrice, setTotalPrice] = useState<number>(52500) // Base price set to 52500
+  const [totalPrice, setTotalPrice] = useState<number>(58500) // Base price set to 58500
   const [formData, setFormData] = useState<FormData>({ name: "", email: "", phone: "" })
   const [formErrors, setFormErrors] = useState<FormErrors>({ name: "", email: "", phone: "" })
   const [showPopup, setShowPopup] = useState<boolean>(false)
@@ -92,7 +92,7 @@ export default function Customize() {
   }
 
   const calculateTotal = (updatedOptions: Options) => {
-    let total = 52500 // Base price
+    let total = 58500 // Base price
     Object.values(updatedOptions).forEach((category: Option[]) => {
       category.forEach((option: Option) => {
         if (option.selected && !option.disabled) total += option.price
@@ -202,10 +202,10 @@ export default function Customize() {
     yPos += 5
     doc.setFont("helvetica", "bold")
     doc.text("Base Price (including labour):", 20, yPos)
-    doc.text(`₹${(52500).toLocaleString()}`, 180, yPos, { align: "right" })
+    doc.text(`₹${(58500).toLocaleString()}`, 180, yPos, { align: "right" })
     yPos += 5
     doc.text("Total Additional Cost:", 20, yPos)
-    const additionalCost = totalPrice - 52500
+    const additionalCost = totalPrice - 58500
     doc.text(`₹${additionalCost.toLocaleString()}`, 180, yPos, { align: "right" })
     yPos += 5
     doc.line(20, yPos, 190, yPos)
