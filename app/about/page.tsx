@@ -56,7 +56,7 @@ export default function AboutUs() {
         </motion.h2>
 
         <div className="grid md:grid-cols-5 gap-12">
-          {/* Team Member 1 - Hardware Engineer */}
+          {/* Team Member 1 - Software Engineer */}
           <motion.div
             className="group relative overflow-hidden rounded-lg shadow-lg transition-transform transform hover:scale-105"
             initial={{ opacity: 0, y: 50 }}
@@ -65,15 +65,15 @@ export default function AboutUs() {
           >
             <Image
               src="/image1.png"
-              alt="Hardware Engineer"
+              alt="Software Engineer"
               width={400}
               height={400}
               className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 transition-opacity duration-300 group-hover:bg-opacity-70">
               <h3 className="text-white text-xl font-semibold">Anshumaan Vats</h3>
-              <p className="text-primary text-sm">Hardware Engineer</p>
-              <p className="text-white text-xs">Led the team while designing and programming the smart wheelchair’s circuits and control systems.</p>
+              <p className="text-primary text-sm">Software Engineer</p>
+              <p className="text-white text-xs">Led the team while designing and programming the smart wheelchair’s circuits and control systems.Also completed the project website.</p>
             </div>
           </motion.div>
 
@@ -106,79 +106,16 @@ export default function AboutUs() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <Image
-              src="/image3.png"
+              src="/image3.jpg"
               alt="Software Engineer"
               width={400}
               height={400}
               className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 transition-opacity duration-300 group-hover:bg-opacity-70">
-              <h3 className="text-white text-xl font-semibold">Anubhuti Sharma</h3>
+              <h3 className="text-white text-xl font-semibold">Abhay</h3>
               <p className="text-primary text-sm">Software Engineer</p>
               <p className="text-white text-xs">Conducted market research and identified revenue opportunities to drive product innovation and business growth.</p>
-            </div>
-          </motion.div>
-
-          {/* Team Member 4 - Software Engineer */}
-          <motion.div
-            className="group relative overflow-hidden rounded-lg shadow-lg transition-transform transform hover:scale-105"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Image
-              src="/image4.png"
-              alt="Software Engineer"
-              width={400}
-              height={400}
-              className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 transition-opacity duration-300 group-hover:bg-opacity-70">
-              <h3 className="text-white text-xl font-semibold">Lovish Grover</h3>
-              <p className="text-primary text-sm">Software Engineer</p>
-              <p className="text-white text-xs">Completed the project website and contributed to hardware troubleshooting and system integration.</p>
-            </div>
-          </motion.div>
-
-          {/* Team Member 5 - Software Engineer */}
-          <motion.div
-            className="group relative overflow-hidden rounded-lg shadow-lg transition-transform transform hover:scale-105"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Image
-              src="/image5.png"
-              alt="Software Engineer"
-              width={400}
-              height={400}
-              className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 transition-opacity duration-300 group-hover:bg-opacity-70">
-              <h3 className="text-white text-xl font-semibold">Arpita</h3>
-              <p className="text-primary text-sm">Software Engineer</p>
-              <p className="text-white text-xs">Led research and development on existing technologies, providing innovative add-ons and feature enhancements.</p>
-            </div>
-          </motion.div>
-
-          {/* Team Member 5 - Software Engineer */}
-          <motion.div
-            className="group relative overflow-hidden rounded-lg shadow-lg transition-transform transform hover:scale-105"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Image
-              src="/image3.png"
-              alt="Software Engineer"
-              width={400}
-              height={400}
-              className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 transition-opacity duration-300 group-hover:bg-opacity-70">
-              <h3 className="text-white text-xl font-semibold">Arpita</h3>
-              <p className="text-primary text-sm">Software Engineer</p>
-              <p className="text-white text-xs">Develops ergonomic wheelchair frames with adaptive suspension for smooth mobility.</p>
             </div>
           </motion.div>
         </div>
