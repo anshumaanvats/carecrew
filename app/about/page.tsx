@@ -55,7 +55,7 @@ export default function AboutUs() {
           Meet Our Team
         </motion.h2>
 
-        <div className="grid md:grid-cols-5 gap-12">
+        <div className="grid md:grid-cols-3 gap-12">
           {/* Team Member 1 - Software Engineer */}
           <motion.div
             className="group relative overflow-hidden rounded-lg shadow-lg transition-transform transform hover:scale-105"
