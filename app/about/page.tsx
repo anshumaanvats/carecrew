@@ -73,7 +73,7 @@ export default function AboutUs() {
             <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 transition-opacity duration-300 group-hover:bg-opacity-70">
               <h3 className="text-white text-xl font-semibold">Anshumaan Vats</h3>
               <p className="text-primary text-sm">Software Engineer</p>
-              <p className="text-white text-xs">Led the team while designing and programming the smart wheelchair’s circuits and control systems.Also completed the project website.</p>
+              <p className="text-white text-xs">Led the team while designing and programming the smart wheelchair’s circuits, control systems and designed the CareCrew website.</p>
             </div>
           </motion.div>
 
